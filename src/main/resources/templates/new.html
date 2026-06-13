@@ -1,44 +1,56 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: head">
-  <title>New Event - NGO Anderlecht</title>
+    <title>New Event - NGO Anderlecht</title>
 </head>
-<body>
+<body class="bg-gray-50 min-h-screen flex flex-col">
 <div th:replace="fragments/header :: menu"></div>
 
-<main class="container mx-auto p-4">
-  <h1 class="text-2xl font-bold mb-4">Create New Event</h1>
-  <div th:if="${error}" class="bg-red-100 text-red-700 p-2 mb-4 rounded" th:text="${error}"></div>
-  <form th:action="@{/new}" method="post" class="max-w-lg">
-    <div class="mb-4">
-      <label class="block mb-1">Title</label>
-      <input type="text" name="title" class="w-full border p-2 rounded" required>
+<main class="container mx-auto px-4 py-8 flex-grow">
+    <div class="max-w-2xl mx-auto">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">Create New Event</h1>
+            <p class="text-gray-600 mt-1">Fill in the details below to add a new community event</p>
+        </div>
+
+        <div th:if="${error}" class="mb-6 bg-red-50 border-l-4 border-red-500 text-red-700 p-4 rounded-r-lg shadow-sm" th:text="${error}"></div>
+
+        <form th:action="@{/new}" method="post" class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 space-y-6">
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">Title</label>
+                <input type="text" name="title" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors" placeholder="Event title" required>
+            </div>
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">Description</label>
+                <textarea name="description" rows="4" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors" placeholder="Describe the event" required></textarea>
+            </div>
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">Organization</label>
+                <input type="text" name="organization" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors" placeholder="NGO or partner name" required>
+            </div>
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">Contact Email</label>
+                <input type="email" name="contactEmail" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors" placeholder="contact@example.com" required>
+            </div>
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">Date & Time</label>
+                <input type="datetime-local" name="timestamp" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors" required>
+            </div>
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">Location</label>
+                <select name="locationId" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors" required>
+                    <option value="">Select a location</option>
+                    <option th:each="loc : ${locations}" th:value="${loc.id}" th:text="${loc.name + ' - ' + loc.address}"></option>
+                </select>
+            </div>
+            <div class="flex items-center space-x-4 pt-2">
+                <button type="submit" class="px-6 py-2.5 bg-accent-500 hover:bg-accent-600 text-white font-medium rounded-lg shadow-sm transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-accent-500">
+                    Create Event
+                </button>
+                <a th:href="@{/}" class="px-6 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium rounded-lg transition-colors">Cancel</a>
+            </div>
+        </form>
     </div>
-    <div class="mb-4">
-      <label class="block mb-1">Description</label>
-      <textarea name="description" class="w-full border p-2 rounded" required></textarea>
-    </div>
-    <div class="mb-4">
-      <label class="block mb-1">Organization</label>
-      <input type="text" name="organization" class="w-full border p-2 rounded" required>
-    </div>
-    <div class="mb-4">
-      <label class="block mb-1">Contact Email</label>
-      <input type="email" name="contactEmail" class="w-full border p-2 rounded" required>
-    </div>
-    <div class="mb-4">
-      <label class="block mb-1">Date & Time</label>
-      <input type="datetime-local" name="timestamp" class="w-full border p-2 rounded" required>
-    </div>
-    <div class="mb-4">
-      <label class="block mb-1">Location</label>
-      <select name="locationId" class="w-full border p-2 rounded" required>
-        <option value="">Select a location</option>
-        <option th:each="loc : ${locations}" th:value="${loc.id}" th:text="${loc.name}"></option>
-      </select>
-    </div>
-    <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Save</button>
-  </form>
 </main>
 
 <div th:replace="fragments/footer :: footer"></div>
