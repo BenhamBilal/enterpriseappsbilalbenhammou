@@ -26,8 +26,9 @@ AI Chat Geschiedenis
 --------------------
 - opencode (AI coding assistant): Begeleiding bij projectstructuur (MVC patroon, mappenindeling), uitleg over JPA entiteitsrelaties en Thymeleaf fragments. Geen code geschreven, enkel uitleg en advies gekregen.
 - ChatGPT: Tailwind CSS classes voor professionele layout en kleurenschema (blauw/oranje combinatie en card-design).
+- link van ia Chat [AI Chat Geschiedenis](aiChatGeschiedenis.md)
 
-Handleiding / Hoe uit te voeren
+Handleiding / Hoe uit te voeren 
 -------------------------------
 1. Zorg dat Java 25 geinstalleerd is (java -version)
 2. Open een terminal in de project root map
