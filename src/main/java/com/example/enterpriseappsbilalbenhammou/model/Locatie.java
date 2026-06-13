@@ -16,11 +16,16 @@ public class Locatie {
 
     private int capacity;
 
+    public Locatie(){
+
+    }
+
     public Locatie(String name, String address, int capacity) {
         this.name = name;
         this.address = address;
         this.capacity = capacity;
     }
+
 
     public Long getId() {
         return id;
