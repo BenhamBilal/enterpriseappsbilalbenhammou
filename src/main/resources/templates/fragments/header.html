@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO Anderlecht</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<nav th:fragment="menu" class="bg-green-700 text-white p-4">
+    <div class="container mx-auto flex justify-between">
+        <a th:href="@{/}" class="font-bold text-xl">NGO Anderlecht</a>
+        <div class="space-x-4">
+            <a th:href="@{/}" class="hover:underline">Home</a>
+            <a th:href="@{/new}" class="hover:underline">New Event</a>
+            <a th:href="@{/about}" class="hover:underline">About</a>
+            <a th:href="@{/contact}" class="hover:underline">Contact</a>
+        </div>
+    </div>
+</nav>
